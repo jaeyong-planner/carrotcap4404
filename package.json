@@ -1,0 +1,62 @@
+{
+  "name": "skin-concierge",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://juniekim.github.io/SKIN-concierge",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:gh": "NODE_ENV=production vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext js,jsx --fix",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "deploy": "npm run build:gh && gh-pages -d dist",
+    "deploy:gh": "gh-pages -d dist",
+    "clean": "rimraf dist node_modules/.vite",
+    "type-check": "tsc --noEmit",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "chart.js": "^4.5.0",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.1",
+    "rimraf": "^5.0.5",
+    "terser": "^5.43.1",
+    "vite": "^5.1.0",
+    "vite-bundle-analyzer": "^0.7.0",
+    "vitest": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juniekim/SKIN-concierge.git"
+  },
+  "keywords": [
+    "skin-care",
+    "concierge",
+    "react",
+    "vite",
+    "beauty"
+  ],
+  "author": "Junie Kim",
+  "license": "MIT"
+}

@@ -1,0 +1,245 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+/* Lato */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHh30wWw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USew8.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHvxk.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVew8.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50Xew8.ttf) format('truetype');
+}
+
+:root {
+  /* Base Colors */
+  --white: #FFFFFF;
+  --black: #000000;
+  --red: #FF3C00;
+  --gray: #191919;
+
+  /* Brand Colors */
+  --brand-primary: var(--red);
+  --brand-secondary: var(--gray);
+
+  /* Ground Colors */
+  --ground-100: var(--white);
+  --ground-90: rgba(255, 255, 255, 0.9);
+  --ground-80: rgba(255, 255, 255, 0.8);
+  --ground-70: rgba(255, 255, 255, 0.7);
+  --ground-60: rgba(255, 255, 255, 0.6);
+  --ground-50: rgba(255, 255, 255, 0.5);
+  --ground-40: rgba(255, 255, 255, 0.4);
+  --ground-30: rgba(255, 255, 255, 0.3);
+  --ground-20: rgba(255, 255, 255, 0.2);
+  --ground-15: rgba(255, 255, 255, 0.15);
+  --ground-10: rgba(255, 255, 255, 0.1);
+  --ground-5: rgba(255, 255, 255, 0.05);
+
+  /* Dark Colors */
+  --dark-120: #1A1A1A;
+  --dark-100: var(--gray);
+  --dark-90: rgba(25, 25, 25, 0.9);
+  --dark-80: rgba(25, 25, 25, 0.8);
+  --dark-70: rgba(25, 25, 25, 0.7);
+  --dark-60: rgba(25, 25, 25, 0.6);
+  --dark-50: rgba(25, 25, 25, 0.5);
+  --dark-40: rgba(25, 25, 25, 0.4);
+  --dark-30: rgba(25, 25, 25, 0.3);
+  --dark-20: rgba(25, 25, 25, 0.2);
+  --dark-10: rgba(25, 25, 25, 0.1);
+  --dark-5: rgba(25, 25, 25, 0.05);
+
+  /* Status Colors */
+  --status-error: #FF0000;
+  --status-warning: #FFA600;
+  --status-success: #6CCD5D;
+  --status-info: #2196F3;
+
+  /* UI Colors */
+  --ui-border: var(--dark-10);
+  --ui-background-primary: var(--white);
+  --ui-background-secondary: #F9FAFB;
+  --ui-background-tertiary: #F2F2F2;
+  --ui-foreground-primary: var(--dark-100);
+  --ui-foreground-secondary: var(--dark-70);
+  --ui-foreground-tertiary: var(--dark-50);
+  --ui-accent-primary: var(--brand-primary);
+  --ui-accent-secondary: var(--brand-secondary);
+
+  /* Typography */
+  --font-family-primary: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-english: 'Lato', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-mono: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Effects */
+  --blur-none: 0;
+  --blur-sm: 4px;
+  --blur-base: 8px;
+  --blur-md: 12px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
+  --blur-2xl: 40px;
+  --blur-3xl: 64px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  border: 0 solid var(--ui-border);
+  margin: 0;
+  padding: 0;
+}
+
+/* Base */
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-family-primary);
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ui-background-primary);
+  color: var(--ui-foreground-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography */
+:lang(ko) {
+  font-family: var(--font-family-primary);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+:lang(en) {
+  font-family: var(--font-family-english);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  line-height: 1.25;
+  color: var(--ui-foreground-primary);
+  font-weight: 700;
+}
+
+p {
+  color: var(--ui-foreground-secondary);
+  line-height: 1.625;
+}
+
+/* Interactive */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+}
+
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+}

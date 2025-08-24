@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "hero-image.png": {
+      "ratio": "16:9",
+      "width": 1280,
+      "height": 720,
+      "format": "PNG",
+      "description": "AI 피부 진단 예시 이미지"
+    }
+  },
+  "icons": {
+    "scan.png": {
+      "ratio": "1:1",
+      "width": 800,
+      "height": 800,
+      "format": "PNG",
+      "description": "피부 스캔 아이콘"
+    },
+    "recommendation.png": {
+      "ratio": "1:1",
+      "width": 800,
+      "height": 800,
+      "format": "PNG",
+      "description": "맞춤 추천 아이콘"
+    },
+    "tracking.png": {
+      "ratio": "1:1",
+      "width": 800,
+      "height": 800,
+      "format": "PNG",
+      "description": "변화 추적 아이콘"
+    }
+  },
+  "partners": {
+    "glowpick.png": {
+      "ratio": "4:3",
+      "width": 1024,
+      "height": 768,
+      "format": "PNG",
+      "description": "Glowpick 파트너 로고"
+    },
+    "hwahae.png": {
+      "ratio": "4:3",
+      "width": 1024,
+      "height": 768,
+      "format": "PNG",
+      "description": "Hwahae 파트너 로고"
+    },
+    "lovicare.png": {
+      "ratio": "4:3",
+      "width": 1024,
+      "height": 768,
+      "format": "PNG",
+      "description": "Lovi.care 파트너 로고"
+    }
+  }
+}

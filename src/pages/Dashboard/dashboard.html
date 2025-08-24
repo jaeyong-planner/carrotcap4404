@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대시보드 - SKIN concierge</title>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --accent-100: #FF3C00;
+            --accent-115: #E63600;
+            --accent-5: rgba(255, 60, 0, 0.05);
+            --accent-10: rgba(255, 60, 0, 0.1);
+            --accent-20: rgba(255, 60, 0, 0.2);
+
+            --status-success: #22C55E;
+            --status-warning: #F59E0B;
+            --status-error: #EF4444;
+            --status-info: #3B82F6;
+
+            /* UI Colors */
+            --ui-background-primary: #FFFFFF;
+            --ui-background-secondary: #F8F9FA;
+            --ui-background-tertiary: #F3F4F6;
+            --ui-foreground-primary: #111827;
+            --ui-foreground-secondary: #4B5563;
+            --ui-foreground-tertiary: #9CA3AF;
+            --ui-border: #E5E7EB;
+            --ui-placeholder: #9CA3AF;
+
+            /* Typography */
+            --font-primary: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            --line-height-none: 1;
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+
+            /* Spacing */
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+
+            /* Border Radius */
+            --radius-sm: 0.125rem;
+            --radius-base: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+
+            /* Animations */
+            --transition-duration-fast: 150ms;
+            --transition-duration-normal: 200ms;
+            --transition-duration-slow: 300ms;
+            --transition-duration-slower: 500ms;
+            --transition-timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-timing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: var(--line-height-normal);
+            color: var(--ui-foreground-primary);
+            background-color: var(--ui-background-secondary);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--spacing-8) var(--spacing-4);
+        }
+
+        /* Dashboard Header */
+        .dashboard-header {
+            margin-bottom: var(--spacing-8);
+        }
+
+        .dashboard-header h1 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .dashboard-header p {
+            color: var(--ui-foreground-secondary);
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .stat-card {
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            transition: all var(--transition-duration-normal) var(--transition-timing-ease);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: var(--ui-background-tertiary);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: var(--accent-5);
+            color: var(--accent-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--accent-100);
+            margin: var(--spacing-4) 0;
+            line-height: var(--line-height-none);
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .activity-feed h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .activity-item {
+            padding: var(--spacing-4);
+            border-bottom: 1px solid var(--ui-border);
+            transition: background-color var(--transition-duration-normal) var(--transition-timing-ease);
+        }
+
+        .activity-item:hover {
+            background-color: var(--ui-background-secondary);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-date {
+            font-size: var(--font-size-sm);
+            color: var(--ui-foreground-tertiary);
+            margin-bottom: var(--spacing-1);
+        }
+
+        .activity-item p {
+            color: var(--ui-foreground-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-4) var(--spacing-6);
+            border-radius: var(--radius-lg);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-base);
+            text-decoration: none;
+            transition: all var(--transition-duration-normal) var(--transition-timing-ease);
+        }
+
+        .btn-primary {
+            background: var(--accent-100);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-115);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--ui-border);
+            color: var(--ui-foreground-primary);
+            background: var(--ui-background-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--ui-background-secondary);
+            border-color: var(--accent-100);
+            color: var(--accent-100);
+        }
+
+        /* Help Section */
+        .help-section {
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            text-align: center;
+        }
+
+        .help-section p {
+            color: var(--ui-foreground-secondary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .help-section a {
+            color: var(--accent-100);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: color var(--transition-duration-normal) var(--transition-timing-ease);
+        }
+
+        .help-section a:hover {
+            color: var(--accent-115);
+        }
+
+        .promotion {
+            margin-top: var(--spacing-4);
+            padding: var(--spacing-4);
+            background: var(--accent-5);
+            border-radius: var(--radius-lg);
+            color: var(--accent-100);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-6) var(--spacing-4);
+            }
+
+            .dashboard-header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .dashboard-header p {
+                font-size: var(--font-size-base);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-4);
+            }
+
+            .stat-card {
+                padding: var(--spacing-4);
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-3);
+            }
+
+            .activity-feed {
+                padding: var(--spacing-4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <h1>반가워요, 서연님 👋</h1>
+            <p>오늘의 피부 상태와 맞춤 솔루션을 확인해보세요</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <!-- 피부 점수 카드 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">✨</div>
+                    <h3>피부 점수</h3>
+                </div>
+                <div class="stat-value">85</div>
+                <p style="color: var(--ui-foreground-secondary); margin-bottom: var(--spacing-4);">
+                    AI가 분석한 오늘의 피부 상태
+                </p>
+                <a href="#" class="btn btn-outline" style="width: 100%;">
+                    <span>자세히 보기</span>
+                    <span style="font-size: var(--font-size-lg);">→</span>
+                </a>
+            </div>
+
+            <!-- 추천 제품 카드 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">🎯</div>
+                    <h3>맞춤 추천</h3>
+                </div>
+                <div style="
+                    background: var(--accent-5);
+                    border-radius: var(--radius-lg);
+                    padding: var(--spacing-4);
+                    margin: var(--spacing-4) 0;
+                ">
+                    <div style="
+                        color: var(--accent-100);
+                        font-weight: var(--font-weight-semibold);
+                        margin-bottom: var(--spacing-2);
+                    ">오늘의 TOP 3</div>
+                    <div style="color: var(--ui-foreground-secondary);">
+                        • 수분 크림<br>
+                        • 진정 앰플<br>
+                        • 미스트
+                    </div>
+                </div>
+                <a href="#" class="btn btn-outline" style="width: 100%;">
+                    <span>제품 보기</span>
+                    <span style="font-size: var(--font-size-lg);">→</span>
+                </a>
+            </div>
+
+            <!-- 변화 추이 카드 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">📈</div>
+                    <h3>변화 추이</h3>
+                </div>
+                <p style="color: var(--ui-foreground-secondary);">지난주 대비</p>
+                <div class="stat-value" style="color: var(--status-success);">+5</div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--spacing-2);
+                    color: var(--status-success);
+                    font-size: var(--font-size-sm);
+                    margin-bottom: var(--spacing-4);
+                ">
+                    <span>↑</span>
+                    <span>피부 상태가 개선되고 있어요</span>
+                </div>
+                <a href="#" class="btn btn-outline" style="width: 100%;">
+                    <span>상세 보기</span>
+                    <span style="font-size: var(--font-size-lg);">→</span>
+                </a>
+            </div>
+
+            <!-- 활동 기록 카드 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">📝</div>
+                    <h3>활동 기록</h3>
+                </div>
+                <p style="color: var(--ui-foreground-secondary);">마지막 피부 진단</p>
+                <div style="
+                    font-size: var(--font-size-xl);
+                    font-weight: var(--font-weight-semibold);
+                    margin: var(--spacing-4) 0;
+                    color: var(--ui-foreground-primary);
+                ">2024.06.30</div>
+                <div style="
+                    color: var(--ui-foreground-tertiary);
+                    font-size: var(--font-size-sm);
+                    margin-bottom: var(--spacing-4);
+                ">오늘 새로운 진단을 시작해보세요</div>
+                <a href="#" class="btn btn-outline" style="width: 100%;">
+                    <span>기록 보기</span>
+                    <span style="font-size: var(--font-size-lg);">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="activity-feed">
+            <h3>최근 활동</h3>
+            <div class="activity-item">
+                <div class="activity-date">2024.06.30</div>
+                <p>
+                    <span style="color: var(--accent-100);">피부 진단</span>
+                    결과: 중성, 수분 부족
+                </p>
+            </div>
+            <div class="activity-item">
+                <div class="activity-date">2024.06.29</div>
+                <p>
+                    <span style="color: var(--accent-100);">제품 저장</span>
+                    수분보충 앰플
+                </p>
+            </div>
+            <div class="activity-item">
+                <div class="activity-date">2024.06.28</div>
+                <p>
+                    <span style="color: var(--accent-100);">리뷰 확인</span>
+                    수분보충 앰플 리뷰 요약
+                </p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <a href="#" class="btn btn-primary">
+                <span style="font-size: var(--font-size-xl);">📸</span>
+                <span>AI 피부 스캔 시작하기</span>
+            </a>
+            <a href="#" class="btn btn-outline">
+                <span style="font-size: var(--font-size-xl);">🎯</span>
+                <span>맞춤 제품 추천받기</span>
+            </a>
+        </div>
+
+        <!-- Help Section -->
+        <div class="help-section">
+            <span style="font-size: var(--font-size-xl);">💬</span>
+            <p style="margin: var(--spacing-3) 0;">
+                도움이 필요하신가요?<br>
+                <a href="/faq">자주 묻는 질문</a>에서 답을 찾아보세요
+            </p>
+            <div class="promotion">
+                <span style="font-size: var(--font-size-xl);">🎁</span>
+                <p style="margin-top: var(--spacing-2);">
+                    7월 한정 신규회원 혜택!<br>
+                    프리미엄 기능 1개월 무료
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

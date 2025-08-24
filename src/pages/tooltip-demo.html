@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tooltip Implementation Demo</title>
+	<style>
+		/* Common styles */
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			line-height: 1.6;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.demo-section {
+			margin-bottom: 40px;
+			padding: 20px;
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+		}
+
+		.tooltip-container {
+			position: relative;
+			display: inline-block;
+			margin: 50px;
+		}
+
+		.icon {
+			width: 24px;
+			height: 24px;
+			background: #007bff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			cursor: pointer;
+		}
+
+		/* Anchored Tooltip Styles */
+		.anchored-tooltip {
+			position: absolute;
+			top: calc(100% + 8px);
+			left: 50%;
+			transform: translateX(-50%);
+			background: #333;
+			color: white;
+			padding: 8px 12px;
+			border-radius: 4px;
+			font-size: 14px;
+			white-space: nowrap;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.2s, visibility 0.2s;
+		}
+
+		.anchored-tooltip::before {
+			content: '';
+			position: absolute;
+			top: -6px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			border-bottom: 6px solid #333;
+		}
+
+		.tooltip-container:hover .anchored-tooltip {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		/* Fixed Portal Tooltip Styles */
+		.portal-tooltip {
+			position: fixed;
+			background: #333;
+			color: white;
+			padding: 8px 12px;
+			border-radius: 4px;
+			font-size: 14px;
+			pointer-events: none;
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.2s, visibility 0.2s;
+		}
+
+		.portal-tooltip::before {
+			content: '';
+			position: absolute;
+			top: -6px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			border-bottom: 6px solid #333;
+		}
+	</style>
+</head>
+<body>
+	<h1>Tooltip Implementation Demo</h1>
+	<p>This demo shows two different approaches to implementing tooltips: CSS-only anchored tooltips and JavaScript-powered fixed portal tooltips.</p>
+
+	<div class="demo-section">
+		<h2>1. CSS-only Anchored Tooltip</h2>
+		<p>This tooltip is positioned relative to its parent container using absolute positioning. It works well for static layouts but may have positioning issues with fixed/transformed ancestors.</p>
+		
+		<div class="tooltip-container">
+			<div class="icon">i</div>
+			<div class="anchored-tooltip">This is an anchored tooltip</div>
+		</div>
+	</div>
+
+	<div class="demo-section">
+		<h2>2. Fixed Portal Tooltip</h2>
+		<p>This tooltip uses JavaScript to calculate its position and is rendered in a portal at the document root. It follows the cursor accurately regardless of parent container positioning.</p>
+		
+		<div class="tooltip-container" id="portal-demo">
+			<div class="icon">i</div>
+		</div>
+		<div id="portal-tooltip" class="portal-tooltip">This is a portal tooltip</div>
+	</div>
+
+	<script>
+		// Portal Tooltip Implementation
+		const portalDemo = document.getElementById('portal-demo');
+		const portalTooltip = document.getElementById('portal-tooltip');
+
+		portalDemo.addEventListener('mouseenter', () => {
+			portalTooltip.style.opacity = '1';
+			portalTooltip.style.visibility = 'visible';
+		});
+
+		portalDemo.addEventListener('mouseleave', () => {
+			portalTooltip.style.opacity = '0';
+			portalTooltip.style.visibility = 'hidden';
+		});
+
+		portalDemo.addEventListener('mousemove', (e) => {
+			const rect = portalDemo.getBoundingClientRect();
+			const iconCenterX = rect.left + (rect.width / 2);
+			
+			portalTooltip.style.left = `${iconCenterX}px`;
+			portalTooltip.style.top = `${rect.bottom + 8}px`;
+			portalTooltip.style.transform = 'translateX(-50%)';
+		});
+	</script>
+</body>
+</html>
+
+

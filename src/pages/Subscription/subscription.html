@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구독 및 결제 관리 - SKIN concierge</title>
+    <style>
+        /* IBM Design Language Icons */
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .icon-svg.small {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .icon-svg.large {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .icon-svg.xlarge {
+            width: 48px;
+            height: 48px;
+        }
+        
+        /* Design Tokens */
+        :root {
+            /* Colors */
+            --white: #FFFFFF;
+            --black: #000000;
+            --international-orange: #FF3C00;
+            --base-gray: #191919;
+
+            /* Ground Colors */
+            --ground-100: var(--white);
+            --ground-90: rgb(255 255 255 / 0.9);
+            --ground-80: rgb(255 255 255 / 0.8);
+            --ground-70: rgb(255 255 255 / 0.7);
+            --ground-60: rgb(255 255 255 / 0.6);
+            --ground-50: rgb(255 255 255 / 0.5);
+            --ground-40: rgb(255 255 255 / 0.4);
+            --ground-30: rgb(255 255 255 / 0.3);
+            --ground-20: rgb(255 255 255 / 0.2);
+            --ground-15: rgb(255 255 255 / 0.15);
+            --ground-10: rgb(255 255 255 / 0.1);
+            --ground-5: rgb(255 255 255 / 0.05);
+
+            /* Dark Colors */
+            --dark-120: #1A1A1A;
+            --dark-100: #191919;
+            --dark-90: rgb(25 25 25 / 0.9);
+            --dark-80: rgb(25 25 25 / 0.8);
+            --dark-70: rgb(25 25 25 / 0.7);
+            --dark-60: rgb(25 25 25 / 0.6);
+            --dark-50: rgb(25 25 25 / 0.5);
+            --dark-40: rgb(25 25 25 / 0.4);
+            --dark-30: rgb(25 25 25 / 0.3);
+            --dark-20: rgb(25 25 25 / 0.2);
+            --dark-10: rgb(25 25 25 / 0.1);
+            --dark-5: rgb(25 25 25 / 0.05);
+
+            /* Accent Colors */
+            --accent-115: #E53600;
+            --accent-100: #FF3C00;
+            --accent-90: rgb(255 60 0 / 0.9);
+            --accent-80: rgb(255 60 0 / 0.8);
+            --accent-70: rgb(255 60 0 / 0.7);
+            --accent-60: rgb(255 60 0 / 0.6);
+            --accent-50: rgb(255 60 0 / 0.5);
+            --accent-40: rgb(255 60 0 / 0.4);
+            --accent-30: rgb(255 60 0 / 0.3);
+            --accent-20: rgb(255 60 0 / 0.2);
+            --accent-10: rgb(255 60 0 / 0.1);
+            --accent-5: rgb(255 60 0 / 0.05);
+
+            /* Status Colors */
+            --status-error: #FF0000;
+            --status-warning: #FFA600;
+            --status-success: #6CCD5D;
+
+            /* UI Colors */
+            --ui-border: var(--dark-10);
+            --ui-dropdown-background: var(--white);
+            --ui-background-primary: var(--white);
+            --ui-background-secondary: #F9FAFB;
+            --ui-background-tertiary: #F2F2F2;
+            --ui-foreground-primary: var(--dark-100);
+            --ui-foreground-secondary: var(--dark-70);
+            --ui-foreground-tertiary: var(--dark-50);
+            --ui-wash: #F2F2F2;
+            --ui-placeholder: var(--dark-50);
+            --ui-outline: transparent;
+            --ui-image-background: #E9EAEB;
+            --ui-image-loading: #C3CCD0;
+            --ui-image-content: var(--dark-50);
+            --ui-overlay: var(--dark-50);
+
+            /* Typography */
+            --font-family-primary: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            --font-family-english: 'Lato', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            --font-family-monospace: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+            --font-size-xs: 0.8125rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+            --font-size-6xl: 4rem;
+
+            --font-weight-thin: 100;
+            --font-weight-light: 300;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+
+            --line-height-none: 1;
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+
+            --letter-spacing-tighter: -0.05em;
+            --letter-spacing-tight: -0.025em;
+            --letter-spacing-normal: 0em;
+            --letter-spacing-wide: 0.025em;
+            --letter-spacing-wider: 0.05em;
+            --letter-spacing-widest: 0.1em;
+
+            /* Spacing */
+            --spacing-0: 0;
+            --spacing-px: 1px;
+            --spacing-0_5: 0.125rem;
+            --spacing-1: 0.25rem;
+            --spacing-1_5: 0.375rem;
+            --spacing-2: 0.5rem;
+            --spacing-2_5: 0.625rem;
+            --spacing-3: 0.75rem;
+            --spacing-3_5: 0.875rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+
+            /* Border Radius */
+            --radius-none: 0;
+            --radius-sm: 0.125rem;
+            --radius-base: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+            /* Animations */
+            --animation-duration-base: 0.3s;
+            --animation-duration-smooth: 0.6s;
+            --animation-duration-bounce: 0.5s;
+
+            --animation-easing-base: ease;
+            --animation-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            --animation-transition-fade: opacity var(--animation-duration-base) var(--animation-easing-base);
+            --animation-transition-scale: transform var(--animation-duration-smooth) var(--animation-easing-smooth);
+            --animation-transition-slide: transform var(--animation-duration-base) var(--animation-easing-base);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            line-height: var(--line-height-normal);
+            color: var(--ui-foreground-primary);
+            background-color: var(--ui-background-secondary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* Header */
+        .header {
+            background: var(--ui-background-primary);
+            padding: var(--spacing-4) 0;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--accent-100);
+            text-decoration: none;
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: var(--spacing-8);
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--ui-foreground-secondary);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-base);
+            transition: var(--animation-transition-fade);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .header-nav a:hover,
+        .header-nav a.active {
+            color: var(--accent-100);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            padding: var(--spacing-2);
+            cursor: pointer;
+            color: var(--ui-foreground-secondary);
+            transition: var(--animation-transition-scale);
+            font-size: var(--font-size-xl);
+        }
+
+        .btn-icon:hover,
+        .btn-icon.active {
+            color: var(--accent-100);
+            transform: translateY(-2px);
+        }
+
+        .btn-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            border: 2px solid var(--ui-border);
+            transition: var(--animation-transition-scale);
+            cursor: pointer;
+            background: var(--ui-image-background);
+        }
+
+        .btn-profile:hover {
+            border-color: var(--accent-100);
+            transform: scale(1.05);
+        }
+
+        .btn-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--animation-transition-fade);
+        }
+
+        /* Common Components */
+        .card {
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-6);
+            transition: var(--animation-transition-scale);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h2 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-6);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-tight);
+        }
+
+        .page-header {
+            text-align: center;
+            margin: var(--spacing-12) 0;
+        }
+
+        .page-header h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-4);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .page-header .subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--ui-foreground-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: var(--line-height-relaxed);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-3) var(--spacing-6);
+            background: var(--accent-100);
+            color: var(--ground-100);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: var(--animation-transition-scale);
+            text-decoration: none;
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-115);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-3) var(--spacing-6);
+            background: var(--ui-background-primary);
+            color: var(--accent-100);
+            border: 2px solid var(--accent-100);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: var(--animation-transition-scale);
+            text-decoration: none;
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-10);
+            transform: translateY(-2px);
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--accent-100);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: var(--animation-transition-fade);
+            padding: var(--spacing-2);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-text:hover {
+            color: var(--accent-115);
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--ui-background-primary);
+            padding: var(--spacing-8) 0;
+            margin-top: auto;
+            border-top: 1px solid var(--ui-border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-6);
+        }
+
+        .footer-links a {
+            color: var(--ui-foreground-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: var(--animation-transition-fade);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .footer-links a:hover {
+            color: var(--ui-foreground-primary);
+        }
+
+        .copyright {
+            color: var(--ui-foreground-tertiary);
+            font-size: var(--font-size-sm);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        /* Subscription Specific Styles */
+        .subscription-section {
+            padding: var(--spacing-8);
+        }
+
+        .subscription-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-8);
+            padding: var(--spacing-6);
+            background: var(--ui-background-secondary);
+            border-radius: var(--radius-2xl);
+        }
+
+        .subscription-status {
+            text-align: center;
+            padding: var(--spacing-6);
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-2) var(--spacing-4);
+            background: var(--accent-10);
+            color: var(--accent-100);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--spacing-4);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .subscription-status h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-2);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-tight);
+        }
+
+        .price {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--accent-100);
+            margin-bottom: var(--spacing-4);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .next-payment {
+            color: var(--ui-foreground-secondary);
+            font-size: var(--font-size-sm);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .subscription-features {
+            padding: var(--spacing-6);
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .subscription-features h4 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-4);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-snug);
+        }
+
+        .subscription-features ul {
+            list-style: none;
+        }
+
+        .subscription-features li {
+            color: var(--ui-foreground-secondary);
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-3);
+            letter-spacing: var(--letter-spacing-wide);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .subscription-features li:last-child {
+            margin-bottom: 0;
+        }
+
+        .subscription-actions {
+            grid-column: span 2;
+            display: flex;
+            gap: var(--spacing-4);
+            justify-content: center;
+            padding-top: var(--spacing-6);
+        }
+
+        /* Payment History */
+        .payment-section {
+            padding: var(--spacing-8);
+        }
+
+        .payment-history {
+            background: var(--ui-background-secondary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-4);
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            padding: var(--spacing-4);
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-4);
+            transition: var(--animation-transition-slide);
+        }
+
+        .payment-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .payment-item:hover {
+            transform: translateX(4px);
+            background: var(--ui-background-tertiary);
+        }
+
+        .payment-date {
+            font-size: var(--font-size-sm);
+            color: var(--ui-foreground-secondary);
+            letter-spacing: var(--letter-spacing-wide);
+            min-width: 120px;
+        }
+
+        .payment-details {
+            flex: 1;
+        }
+
+        .payment-details h3 {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-1);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-snug);
+        }
+
+        .payment-details p {
+            font-size: var(--font-size-sm);
+            color: var(--ui-foreground-secondary);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .payment-amount {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--accent-100);
+            letter-spacing: var(--letter-spacing-wide);
+            margin-right: var(--spacing-4);
+        }
+
+        /* Payment Methods */
+        .payment-method-section {
+            padding: var(--spacing-8);
+        }
+
+        .payment-methods {
+            background: var(--ui-background-secondary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-4);
+        }
+
+        .payment-method-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4);
+            background: var(--ui-background-primary);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-4);
+            transition: var(--animation-transition-slide);
+        }
+
+        .payment-method-item:hover {
+            transform: translateX(4px);
+            background: var(--ui-background-tertiary);
+        }
+
+        .payment-method-item.active {
+            border: 2px solid var(--accent-100);
+        }
+
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .card-icon {
+            font-size: var(--font-size-2xl);
+        }
+
+        .card-details h3 {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-1);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-snug);
+        }
+
+        .card-details p {
+            font-size: var(--font-size-sm);
+            color: var(--ui-foreground-secondary);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-1) var(--spacing-2);
+            background: var(--accent-10);
+            color: var(--accent-100);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-add-payment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-2);
+            width: 100%;
+            padding: var(--spacing-4);
+            background: var(--ui-background-primary);
+            border: 2px dashed var(--ui-border);
+            border-radius: var(--radius-lg);
+            color: var(--ui-foreground-secondary);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: var(--animation-transition-all);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .btn-add-payment:hover {
+            border-color: var(--accent-100);
+            color: var(--accent-100);
+            background: var(--accent-5);
+        }
+
+        .btn-add-payment .icon {
+            font-size: var(--font-size-xl);
+        }
+
+        /* Support Info */
+        .support-info {
+            text-align: center;
+            padding: var(--spacing-12);
+            background: linear-gradient(135deg, var(--accent-5), var(--accent-10));
+            border-radius: var(--radius-2xl);
+        }
+
+        .support-content h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--ui-foreground-primary);
+            margin-bottom: var(--spacing-4);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-tight);
+        }
+
+        .support-content p {
+            font-size: var(--font-size-lg);
+            color: var(--ui-foreground-secondary);
+            margin-bottom: var(--spacing-8);
+            letter-spacing: var(--letter-spacing-wide);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Switch Toggle */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--ui-border);
+            transition: var(--animation-transition-fade);
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-inner);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--ground-100);
+            transition: var(--animation-transition-slide);
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        input:checked + .slider {
+            background: var(--accent-100);
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 0 2px var(--accent-20);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .page-header .subtitle {
+                font-size: var(--font-size-base);
+            }
+
+            .subscription-info {
+                grid-template-columns: 1fr;
+            }
+
+            .subscription-actions {
+                grid-column: auto;
+                flex-direction: column;
+            }
+
+            .payment-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .payment-date {
+                min-width: auto;
+            }
+
+            .payment-amount {
+                margin: var(--spacing-2) 0;
+            }
+
+            .card-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-2);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: var(--spacing-4);
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: var(--spacing-2);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        :focus {
+            outline: 3px solid var(--accent-30);
+            outline-offset: 2px;
+        }
+
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent-30);
+            outline-offset: 2px;
+        }
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-logo">SKIN concierge</div>
+        <nav class="header-nav">
+            <a href="/dashboard">대시보드</a>
+            <a href="/scan">피부 스캔</a>
+            <a href="/products">추천 제품</a>
+            <a href="/profile">마이페이지</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-icon" aria-label="알림">
+                <svg class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+            </button>
+            <button class="btn-icon" aria-label="설정">
+                <svg class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
+            <button class="btn-profile" aria-label="프로필">
+                <img src="/assets/profile-placeholder.jpg" alt="프로필 이미지">
+            </button>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 페이지 제목 -->
+            <div class="page-header">
+                <h1>구독 현황과 결제를 한 곳에서 관리하세요</h1>
+                <p class="subtitle">현재 구독 중인 서비스와 결제 내역을 확인하고 관리할 수 있습니다</p>
+            </div>
+
+            <!-- 구독 현황 섹션 -->
+            <section class="subscription-section card">
+                <h2>구독 현황</h2>
+                <div class="subscription-info">
+                    <div class="subscription-status">
+                        <div class="status-badge active">구독 중</div>
+                        <h3>프리미엄 플랜</h3>
+                        <p class="price">₩19,900/월</p>
+                        <p class="next-payment">다음 결제일: 2024년 4월 15일</p>
+                    </div>
+                    <div class="subscription-features">
+                        <h4>현재 이용 중인 혜택</h4>
+                        <ul>
+                            <li>✓ 무제한 AI 피부 분석</li>
+                            <li>✓ 맞춤형 제품 추천</li>
+                            <li>✓ 전문가 1:1 상담</li>
+                            <li>✓ 프리미엄 콘텐츠 접근</li>
+                        </ul>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn-primary">구독 변경</button>
+                        <button class="btn-secondary">구독 해지</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 결제 내역 섹션 -->
+            <section class="payment-section card">
+                <h2>결제 내역</h2>
+                <div class="payment-history">
+                    <div class="payment-item">
+                        <div class="payment-date">2024년 3월 15일</div>
+                        <div class="payment-details">
+                            <h3>프리미엄 플랜</h3>
+                            <p>정기 결제</p>
+                        </div>
+                        <div class="payment-amount">₩19,900</div>
+                        <button class="btn-text">영수증</button>
+                    </div>
+                    <div class="payment-item">
+                        <div class="payment-date">2024년 2월 15일</div>
+                        <div class="payment-details">
+                            <h3>프리미엄 플랜</h3>
+                            <p>정기 결제</p>
+                        </div>
+                        <div class="payment-amount">₩19,900</div>
+                        <button class="btn-text">영수증</button>
+                    </div>
+                    <div class="payment-item">
+                        <div class="payment-date">2024년 1월 15일</div>
+                        <div class="payment-details">
+                            <h3>프리미엄 플랜</h3>
+                            <p>정기 결제</p>
+                        </div>
+                        <div class="payment-amount">₩19,900</div>
+                        <button class="btn-text">영수증</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 결제 수단 관리 섹션 -->
+            <section class="payment-method-section card">
+                <h2>결제 수단 관리</h2>
+                <div class="payment-methods">
+                    <div class="payment-method-item active">
+                        <div class="card-info">
+                            <svg class="icon-svg" viewBox="0 0 24 24">
+                                <path d="M1 4h22v16H1zM1 10h22"/>
+                            </svg>
+                            <div class="card-details">
+                                <h3>신한카드</h3>
+                                <p>****-****-****-1234</p>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <span class="badge">기본</span>
+                            <button class="btn-text">관리</button>
+                        </div>
+                    </div>
+                    <div class="payment-method-item">
+                        <div class="card-info">
+                            <svg class="icon-svg" viewBox="0 0 24 24">
+                                <path d="M1 4h22v16H1zM1 10h22"/>
+                            </svg>
+                            <div class="card-details">
+                                <h3>현대카드</h3>
+                                <p>****-****-****-5678</p>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-text">기본으로 설정</button>
+                            <button class="btn-text">삭제</button>
+                        </div>
+                    </div>
+                    <button class="btn-add-payment">
+                        <span class="icon">+</span>
+                        새 결제 수단 추가
+                    </button>
+                </div>
+            </section>
+
+            <!-- 알림 설정 섹션 -->
+            <section class="notification-section card">
+                <h2>결제 알림 설정</h2>
+                <div class="notification-settings">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>결제 예정 알림</h3>
+                            <p>결제 3일 전 알림 받기</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>결제 완료 알림</h3>
+                            <p>결제 완료시 알림 받기</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 고객 지원 안내 -->
+            <div class="support-info card">
+                <div class="support-content">
+                    <h2>결제 관련 문제가 있으신가요?</h2>
+                    <p>결제 관련 문제는 고객 지원으로 문의해 주세요.</p>
+                    <a href="/support" class="btn-primary">고객 지원 문의하기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="/about">회사 소개</a>
+                    <a href="/privacy">개인정보 처리방침</a>
+                    <a href="mailto:info@skinconcierge.com">문의</a>
+                </div>
+                <p class="copyright">© 2025 SKIN concierge</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
