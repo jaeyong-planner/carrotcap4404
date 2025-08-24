@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
 import { Container, Typography, Button, Card } from '../../components/common';
 import { colors, spacing, typography, animations, borderRadius } from '../../styles/design-system';
@@ -296,8 +296,8 @@ const Signup = () => {
                     fontSize: typography.fontSize.sm,
                   }}
                 >
-                  <a 
-                    href="/terms"
+                  <Link 
+                    to="/terms"
                     style={{
                       color: colors.accent[100],
                       textDecoration: 'none',
@@ -305,10 +305,10 @@ const Signup = () => {
                     }}
                   >
                     이용약관
-                  </a>
+                  </Link>
                   {' '}및{' '}
-                  <a 
-                    href="/privacy"
+                  <Link 
+                    to="/privacy"
                     style={{
                       color: colors.accent[100],
                       textDecoration: 'none',
@@ -316,7 +316,7 @@ const Signup = () => {
                     }}
                   >
                     개인정보처리방침
-                  </a>
+                  </Link>
                   에 동의합니다
                 </Typography>
               </label>
@@ -377,8 +377,8 @@ const Signup = () => {
               }}
             >
               이미 계정이 있으신가요?{' '}
-              <a 
-                href="/login"
+              <Link 
+                to="/login"
                 style={{
                   color: colors.accent[100],
                   textDecoration: 'none',
@@ -390,7 +390,7 @@ const Signup = () => {
                 }}
               >
                 로그인
-              </a>
+              </Link>
             </Typography>
           </div>
         </Card>

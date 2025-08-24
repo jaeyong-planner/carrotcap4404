@@ -1,9 +1,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://jaeyong-planner.github.io/carrotcap4404/sitemap.xml
-
 # Disallow admin and private areas
 Disallow: /admin/
 Disallow: /private/

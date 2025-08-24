@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
 import { Container, Typography, Button, Card } from '../../components/common';
 import { colors, spacing, typography, animations, borderRadius } from '../../styles/design-system';
@@ -27,7 +27,7 @@ const Login = () => {
     authService.login(formData.email, formData.password).then(
       () => {
         navigate('/dashboard');
-        window.location.reload();
+        window.location.reload(); // Consider removing this for a smoother SPA experience
       },
       (error) => {
         const resMessage =
@@ -238,8 +238,8 @@ const Login = () => {
                   로그인 상태 유지
                 </Typography>
               </label>
-              <a 
-                href="/forgot-password"
+              <Link 
+                to="/password-recovery"
                 style={{
                   color: colors.accent[100],
                   textDecoration: 'none',
@@ -252,7 +252,7 @@ const Login = () => {
                 }}
               >
                 비밀번호를 잊으셨나요?
-              </a>
+              </Link>
             </div>
 
             <Button 
@@ -303,8 +303,8 @@ const Login = () => {
               }}
             >
               아직 계정이 없으신가요?{' '}
-              <a 
-                href="/signup"
+              <Link 
+                to="/signup"
                 style={{
                   color: colors.accent[100],
                   textDecoration: 'none',
@@ -316,7 +316,7 @@ const Login = () => {
                 }}
               >
                 회원가입
-              </a>
+              </Link>
             </Typography>
           </div>
         </Card>

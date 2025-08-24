@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import authService from '../../services/authService';
 import { Container, Typography, Button, Card } from '../../components/common';
 import { colors, spacing, typography, animations, borderRadius } from '../../styles/design-system';
@@ -183,8 +184,8 @@ const PasswordRecovery = () => {
               }}
             >
               로그인 페이지로 돌아가기{' '}
-              <a 
-                href="/login"
+              <Link 
+                to="/login"
                 style={{
                   color: colors.accent[100],
                   textDecoration: 'none',
@@ -196,7 +197,7 @@ const PasswordRecovery = () => {
                 }}
               >
                 로그인
-              </a>
+              </Link>
             </Typography>
           </div>
         </Card>

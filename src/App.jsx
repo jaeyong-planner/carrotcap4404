@@ -1,29 +1,29 @@
 import React, { Suspense } from 'react';
 import AppRouter from './router';
 
-// Loading component
+// Simple loading component
 const LoadingFallback = () => (
   <div style={{
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #FF3C00, #E53600)',
-    color: 'white',
-    fontSize: '1.5rem',
-    fontWeight: '600'
+    background: '#FFFFFF',
+    color: '#FF3C00',
+    fontSize: '1.2rem',
+    fontWeight: '500'
   }}>
     <div style={{ textAlign: 'center' }}>
       <div style={{
-        width: '40px',
-        height: '40px',
-        border: '4px solid rgba(255, 255, 255, 0.3)',
-        borderTop: '4px solid white',
+        width: '30px',
+        height: '30px',
+        border: '3px solid #FF3C00',
+        borderTop: '3px solid transparent',
         borderRadius: '50%',
         animation: 'spin 1s linear infinite',
         margin: '0 auto 1rem'
       }}></div>
-      <span>SKIN concierge 로딩 중...</span>
+      <span>페이지 로딩 중...</span>
     </div>
   </div>
 );
