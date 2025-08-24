@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://juniekim.github.io/SKIN-concierge/sitemap.xml
+Sitemap: https://jaeyong-planner.github.io/carrotcap4404/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/

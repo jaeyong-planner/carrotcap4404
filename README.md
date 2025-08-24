@@ -8,7 +8,7 @@ AI 기반 맞춤형 피부 관리 서비스입니다. 피부 분석, 제품 추�
 ```bash
 npm run deploy
 ```
-- URL: https://juniekim.github.io/SKIN-concierge/
+- URL: https://jaeyong-planner.github.io/carrotcap4404/
 
 ### Vercel
 ```bash
@@ -102,5 +102,5 @@ MIT License
 
 ## 📞 문의
 
-- 이슈: [GitHub Issues](https://github.com/juniekim/SKIN-concierge/issues)
+- 이슈: [GitHub Issues](https://github.com/jaeyong-planner/carrotcap4404/issues)
 - 이메일: contact@skinconcierge.com

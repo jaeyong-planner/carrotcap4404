@@ -9,7 +9,9 @@
   "regions": ["icn1", "hnd1"],
   "functionFailoverRegion": "hnd1",
   "rewrites": [
+    { "source": "/carrotcap4404/assets/(.*)", "destination": "/assets/$1" },
     { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/carrotcap4404/(.*)", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
@@ -29,7 +31,7 @@
       ]
     },
     {
-      "source": "/manifest.json",
+      "source": "/manifest.webmanifest",
       "headers": [
         { "key": "Content-Type", "value": "application/manifest+json" },
         { "key": "Cache-Control", "value": "public, max-age=3600" }
